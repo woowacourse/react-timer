@@ -4,11 +4,8 @@
   "private": true,
   "description": "react-timer ⏳ 록바, 스밍, 비녀",
   "dependencies": {
-    "@emotion/react": "^11.9.0",
-    "@emotion/styled": "^11.8.1",
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
-    "@mui/material": "^5.6.4",
     "gh-pages": "^3.2.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
