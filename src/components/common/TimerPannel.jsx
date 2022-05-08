@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import DigitalFont from '../../styles/font/digital-7.ttf';
 
 const TimerPanelBox = styled.div`
-  width: 200px;
+  width: 100%;
   height: 80px;
+
+  text-align: center;
 `;
 
 const TimerPanelText = styled.div`
@@ -13,7 +15,7 @@ const TimerPanelText = styled.div`
   }
   font-family: 'digital-7';
   font-weight: 320;
-  font-size: 90px;
+  font-size: 140px;
   color: ${({ theme }) => theme.colors.clock};
   letter-spacing: -10%;
 `;

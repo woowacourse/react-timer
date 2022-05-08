@@ -11,7 +11,7 @@ const TimerButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    filter: brightness(1.07);
+    filter: brightness(1.2);
   }
 `;
 

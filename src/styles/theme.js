@@ -6,6 +6,7 @@ const colors = {
   sophiaPink: '#d44bdb',
   clock: '#FF8E26',
   menu: '#616161',
+  navButtonHover: '#EBEBEB',
 };
 
 const theme = { colors };
