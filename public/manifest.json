@@ -1,0 +1,9 @@
+{
+  "short_name": "react-timer ⏳ 록바, 스밍, 비녀",
+  "name": "react-timer ⏳ 록바, 스밍, 비녀",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
