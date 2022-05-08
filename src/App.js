@@ -93,7 +93,7 @@ const App = () => {
                 중지
               </TimerButton>
             ) : (
-              <TimerButton color='binyeoGreen' onClick={startTimer}>
+              <TimerButton color='binyeoGreen' onClick={startTimer} disabled={time ? false : true}>
                 시작
               </TimerButton>
             )}
