@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import DigitalFont from '../../styles/font/digital-7.ttf';
 
 const TimerPanelBox = styled.div`
   width: 100%;
@@ -9,11 +8,7 @@ const TimerPanelBox = styled.div`
 `;
 
 const TimerPanelText = styled.div`
-  @font-face {
-    font-family: 'digital-7';
-    src: url(${DigitalFont});
-  }
-  font-family: 'digital-7';
+  font-family: 'digital';
   font-weight: 320;
   font-size: 140px;
   color: ${({ theme }) => theme.colors.clock};

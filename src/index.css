@@ -14,3 +14,8 @@ code {
 p {
   margin: 0;
 }
+
+@font-face {
+  font-family: 'digital';
+  src: url('./styles/font/digital-7.ttf');
+}
