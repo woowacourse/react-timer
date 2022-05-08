@@ -1,10 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useReducer } from 'react';
 import styled from 'styled-components';
 
 import TimerButton from './components/TimerButton';
 import TimerPannel from './components/TimerPannel';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
+import Modal from './components/Modal';
 import basicAlarm from './asset/basicAlarm.mp3';
 
 const ContentContainer = styled.div`
@@ -28,12 +29,23 @@ const TimerButtonBox = styled.div`
   gap: 20px;
 `;
 
+const ModalMessage = styled.div`
+  font-size: 20px;
+  text-align: center;
+  font-weight: 500;
+`;
+
 const App = () => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const timerId = useRef();
   const initialTime = useRef(0);
   const audioRef = useRef();
+
+  const [isOpen, toggleModal] = useReducer((modalOpen) => {
+    modalOpen && audioRef.current.pause();
+    return !modalOpen;
+  }, false);
 
   const startTimer = () => {
     setIsRunning(true);
@@ -63,6 +75,12 @@ const App = () => {
     setIsRunning(false);
   };
 
+  const onClickRestart = () => {
+    toggleModal();
+    resetTimer();
+    startTimer();
+  };
+
   const minute = String(parseInt(time / 60)).padStart(2, '0');
   const second = String(time % 60).padStart(2, '0');
 
@@ -74,7 +92,7 @@ const App = () => {
   useEffect(() => {
     if (isRunning && time === 0) {
       audioRef.current.play();
-      alert('타이머가 종료되었습니다.');
+      toggleModal();
       clearInterval(timerId.current);
       setIsRunning(false);
     }
@@ -108,6 +126,22 @@ const App = () => {
           </TimerButtonBox>
         </ContentBox>
       </ContentContainer>
+      {isOpen && (
+        <Modal toggleModal={toggleModal}>
+          <ModalMessage>
+            타이머가 종료되었습니다. <br />
+            <strong>재시작하시겠습니까?</strong>
+          </ModalMessage>
+          <TimerButtonBox>
+            <TimerButton color='binyeoGreen' type='button' onClick={onClickRestart}>
+              Restart
+            </TimerButton>
+            <TimerButton color='lokbaRed' type='button' onClick={toggleModal}>
+              Stop
+            </TimerButton>
+          </TimerButtonBox>
+        </Modal>
+      )}
     </div>
   );
 };

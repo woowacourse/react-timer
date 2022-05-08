@@ -1,6 +1,5 @@
 import ReactDom from 'react-dom';
 import styled from 'styled-components';
-import { useState } from 'react';
 
 const Dimmer = styled.div`
   width: 100%;
@@ -19,10 +18,14 @@ const Dimmer = styled.div`
 `;
 
 const ModalBox = styled.div`
-  width: 35%;
-  height: 300px;
+  width: 25%;
+  height: auto;
   border-radius: 10px;
   background: white;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 
   position: absolute;
   top: 50%;
@@ -33,23 +36,15 @@ const ModalBox = styled.div`
   padding: 20px;
 `;
 
-const Modal = ({ children }) => {
+const Modal = ({ toggleModal, children }) => {
   const modalElement = document.getElementById('modal');
-  const [isOpen, setIsOpen] = useState(true);
 
-  const toggleModal = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  return (
-    isOpen &&
-    ReactDom.createPortal(
-      <div>
-        <Dimmer onClick={toggleModal} />
-        <ModalBox>{children}</ModalBox>
-      </div>,
-      modalElement,
-    )
+  return ReactDom.createPortal(
+    <div>
+      <Dimmer onClick={toggleModal} />
+      <ModalBox>{children}</ModalBox>
+    </div>,
+    modalElement,
   );
 };
 
