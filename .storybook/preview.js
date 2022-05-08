@@ -1,6 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../src/styles/GlobalStyle";
 import theme from "../src/styles/theme";
+import { MemoryRouter } from "react-router";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -18,7 +19,9 @@ export const decorators = [
       <>
         <GlobalStyle />
         <ThemeProvider theme={theme}>
-          <Story {...context} />
+          <MemoryRouter initialEntries={["/"]}>
+            <Story {...context} />
+          </MemoryRouter>
         </ThemeProvider>
       </>
     );
