@@ -1,10 +1,10 @@
-import styled from '@emotion/styled';
 import { useState, useRef, useEffect } from 'react';
-import TimerButton from './components/common/TimerButton';
-import TimerPannel from './components/common/TimerPannel';
+import styled from 'styled-components';
 
-import Header from './components/common/Header';
-import NavBar from './components/common/NavBar';
+import TimerButton from './components/TimerButton';
+import TimerPannel from './components/TimerPannel';
+import Header from './components/Header';
+import NavBar from './components/NavBar';
 
 const ContentContainer = styled.div`
   display: flex;
