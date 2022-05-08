@@ -1,5 +1,12 @@
+import Reset from "styled-reset";
+
 function App() {
-  return <div className="App"></div>;
+  return (
+    <>
+      <Reset />
+      <div className="App"></div>
+    </>
+  );
 }
 
 export default App;
