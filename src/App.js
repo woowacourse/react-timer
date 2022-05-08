@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useReducer } from 'react';
 import styled from 'styled-components';
 
-import TimerButton from './components/TimerButton';
+import { TimerButton, SmallTimerbutton } from './components/TimerButton';
 import TimerPannel from './components/TimerPannel';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
@@ -81,6 +81,13 @@ const App = () => {
     startTimer();
   };
 
+  const onClickQuickTimeAddButton = ({ target }) => {
+    const { textContent } = target;
+    const newMinute = textContent.replace(/[^0-9]/g, '');
+
+    setTime((prev) => prev + newMinute * 60);
+  };
+
   const minute = String(parseInt(time / 60)).padStart(2, '0');
   const second = String(time % 60).padStart(2, '0');
 
@@ -123,6 +130,21 @@ const App = () => {
                 시작
               </TimerButton>
             )}
+          </TimerButtonBox>
+          {/* TODO */}
+          <TimerButtonBox>
+            <SmallTimerbutton color='binyeoGreen' onClick={onClickQuickTimeAddButton}>
+              + 1분
+            </SmallTimerbutton>
+            <SmallTimerbutton color='binyeoGreen' onClick={onClickQuickTimeAddButton}>
+              + 5분
+            </SmallTimerbutton>
+            <SmallTimerbutton color='binyeoGreen' onClick={onClickQuickTimeAddButton}>
+              + 10분
+            </SmallTimerbutton>
+            <SmallTimerbutton color='binyeoGreen' onClick={onClickQuickTimeAddButton}>
+              + 15분
+            </SmallTimerbutton>
           </TimerButtonBox>
         </ContentBox>
       </ContentContainer>

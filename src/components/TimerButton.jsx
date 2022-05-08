@@ -20,4 +20,10 @@ const TimerButton = styled.button`
   }
 `;
 
-export default TimerButton;
+const SmallTimerbutton = styled(TimerButton)`
+  width: 100px;
+  height: 33px;
+  font-size: 14px;
+`;
+
+export { TimerButton, SmallTimerbutton };
