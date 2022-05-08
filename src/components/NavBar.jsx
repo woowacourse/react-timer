@@ -5,6 +5,7 @@ import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 import AvTimerIcon from '@material-ui/icons/AvTimer';
 import HourglassFull from '@material-ui/icons/HourglassFull';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import { NavLink } from 'react-router-dom';
 
 const NavBarBox = styled.div`
   width: 110px;
@@ -15,25 +16,43 @@ const NavBarBox = styled.div`
   background: ${({ theme }) => theme.colors.menu};
 `;
 
+const activeStyle = {
+  background: '#bac8ff',
+  color: 'black',
+  textDecoration: 'none',
+};
+
+const defaultStyle = {
+  textDecoration: 'none',
+};
+
 const NavBar = () => {
   return (
     <NavBarBox>
-      <NavButton>
-        <AccessAlarmIcon />
-        <span>자명종</span>
-      </NavButton>
-      <NavButton>
-        <AvTimerIcon />
-        <span>타이머</span>
-      </NavButton>
-      <NavButton>
-        <HourglassFull />
-        <span>스톱워치</span>
-      </NavButton>
-      <NavButton>
-        <AccessTimeIcon />
-        <span>시계</span>
-      </NavButton>
+      <NavLink to='/alarm' style={({ isActive }) => (isActive ? activeStyle : defaultStyle)}>
+        <NavButton>
+          <AccessAlarmIcon />
+          <span>자명종</span>
+        </NavButton>
+      </NavLink>
+      <NavLink to='/' style={({ isActive }) => (isActive ? activeStyle : defaultStyle)}>
+        <NavButton>
+          <AvTimerIcon />
+          <span>타이머</span>
+        </NavButton>
+      </NavLink>
+      <NavLink to='/stopwatch' style={({ isActive }) => (isActive ? activeStyle : defaultStyle)}>
+        <NavButton>
+          <HourglassFull />
+          <span>스톱워치</span>
+        </NavButton>
+      </NavLink>
+      <NavLink to='/clock' style={({ isActive }) => (isActive ? activeStyle : defaultStyle)}>
+        <NavButton>
+          <AccessTimeIcon />
+          <span>시계</span>
+        </NavButton>
+      </NavLink>
     </NavBarBox>
   );
 };
