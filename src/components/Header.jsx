@@ -21,6 +21,7 @@ const HeaderTitle = styled.div`
   justify-content: center;
   gap: 5px;
   font-weight: 700;
+  cursor: pointer;
 
   p:first-child {
     font-size: 30px;
@@ -39,10 +40,11 @@ const IconBox = styled.div`
 const Header = () => {
   return (
     <HeaderStyle>
-      <HeaderTitle>
+      <HeaderTitle onClick={() => window.location.reload()}>
         <p>vClock.kr</p>
         <p>온라인 시계</p>
       </HeaderTitle>
+
       <IconBox>
         <Brightness6Icon />
         <SettingsOutlinedIcon />

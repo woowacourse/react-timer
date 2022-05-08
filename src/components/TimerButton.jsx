@@ -24,6 +24,11 @@ const SmallTimerbutton = styled(TimerButton)`
   width: 100px;
   height: 33px;
   font-size: 14px;
+
+  &:hover {
+    background: white;
+    color: black;
+  }
 `;
 
 export { TimerButton, SmallTimerbutton };

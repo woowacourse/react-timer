@@ -32,9 +32,9 @@ const ModalMessage = styled.div`
 const TimerPage = () => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  const timerId = useRef();
+  const timerId = useRef(null);
   const initialTime = useRef(0);
-  const audioRef = useRef();
+  const audioRef = useRef(null);
 
   const [isOpen, toggleModal] = useReducer((modalOpen) => {
     modalOpen && audioRef.current.pause();
@@ -127,16 +127,16 @@ const TimerPage = () => {
         )}
       </TimerButtonBox>
       <TimerButtonBox>
-        <SmallTimerbutton color='binyeoGreen' onClick={onClickQuickTimeAddButton}>
+        <SmallTimerbutton color='black' onClick={onClickQuickTimeAddButton}>
           + 1분
         </SmallTimerbutton>
-        <SmallTimerbutton color='binyeoGreen' onClick={onClickQuickTimeAddButton}>
+        <SmallTimerbutton color='black' onClick={onClickQuickTimeAddButton}>
           + 5분
         </SmallTimerbutton>
-        <SmallTimerbutton color='binyeoGreen' onClick={onClickQuickTimeAddButton}>
+        <SmallTimerbutton color='black' onClick={onClickQuickTimeAddButton}>
           + 10분
         </SmallTimerbutton>
-        <SmallTimerbutton color='binyeoGreen' onClick={onClickQuickTimeAddButton}>
+        <SmallTimerbutton color='black' onClick={onClickQuickTimeAddButton}>
           + 15분
         </SmallTimerbutton>
       </TimerButtonBox>
