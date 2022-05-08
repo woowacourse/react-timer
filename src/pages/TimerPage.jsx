@@ -78,8 +78,13 @@ const TimerPage = () => {
   const onClickQuickTimeAddButton = ({ target }) => {
     const { textContent } = target;
     const newMinute = textContent.replace(/[^0-9]/g, '');
+    const calcSecond = newMinute * 60;
 
-    setTime((prev) => prev + newMinute * 60);
+    setTime((prev) => {
+      prev += calcSecond;
+      initialTime.current = prev;
+      return prev;
+    });
   };
 
   const minute = String(parseInt(time / 60)).padStart(2, '0');
