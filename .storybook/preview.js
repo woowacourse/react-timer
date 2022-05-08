@@ -1,5 +1,6 @@
 import { ThemeProvider } from "styled-components";
-import GlobalStyle from "../src/GlobalStyle";
+import GlobalStyle from "../src/styles/GlobalStyle";
+import theme from "../src/styles/theme";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -11,19 +12,15 @@ export const parameters = {
   },
 };
 
-const theme = {
-  woowagreen: "#6FA189",
-  woowawhite: "#FFFFFF",
-  woowablack: "#000000",
-};
-
 export const decorators = [
   (Story, context) => {
     return (
-      <ThemeProvider theme={theme}>
+      <>
         <GlobalStyle />
-        <Story {...context} />
-      </ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <Story {...context} />
+        </ThemeProvider>
+      </>
     );
   },
 ];

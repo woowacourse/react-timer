@@ -1,11 +1,6 @@
 import { ThemeProvider } from "styled-components";
-import GlobalStyle from "./GlobalStyle";
-
-const theme = {
-  woowagreen: "#6FA189",
-  woowawhite: "#FFFFFF",
-  woowablack: "#000000",
-};
+import GlobalStyle from "./styles/GlobalStyle";
+import theme from "./styles/theme";
 
 function App() {
   return (
