@@ -5,6 +5,7 @@ const colors = {
   woodieYellow: '#FFC700',
   sophiaPink: '#d44bdb',
   clock: '#FF8E26',
+  menu: '#616161',
 };
 
 const theme = { colors };

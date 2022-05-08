@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import DigitalFont from '../../styles/font/digital-7.ttf';
 
 const TimerPanelBox = styled.div`
-  width: 500px;
+  width: 200px;
   height: 80px;
 `;
 
