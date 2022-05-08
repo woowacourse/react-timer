@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import Brightness6Icon from '@mui/icons-material/Brightness6';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import Brightness6Icon from '@material-ui/icons/Brightness6';
 
 const HeaderStyle = styled.header`
   width: 100%;

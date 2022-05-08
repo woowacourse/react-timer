@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 import NavButton from './NavButton';
-import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
-import AvTimerIcon from '@mui/icons-material/AvTimer';
-import HourglassTopIcon from '@mui/icons-material/HourglassTop';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
+import AvTimerIcon from '@material-ui/icons/AvTimer';
+import HourglassFull from '@material-ui/icons/HourglassFull';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 const NavBarBox = styled.div`
   width: 110px;
@@ -27,7 +27,7 @@ const NavBar = () => {
         <span>타이머</span>
       </NavButton>
       <NavButton>
-        <HourglassTopIcon />
+        <HourglassFull />
         <span>스톱워치</span>
       </NavButton>
       <NavButton>
