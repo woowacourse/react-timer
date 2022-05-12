@@ -15,7 +15,7 @@ SmallButton.propTypes = {
 
 const StyledButton = styled.button`
   box-sizing: border-box;
-  min-width: 115px;
+  width: 115px;
   height: 48px;
   padding: 4px;
 

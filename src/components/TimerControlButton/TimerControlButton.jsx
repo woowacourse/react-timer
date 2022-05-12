@@ -47,7 +47,7 @@ const CONTROL_ICONS = {
   ),
 };
 
-const TimerControlButton = ({ controlType, ...props }) => {
+const TimerControlButton = ({ controlType = "play", ...props }) => {
   const icon = CONTROL_ICONS[controlType];
 
   return <StyledButton {...props}>{icon}</StyledButton>;

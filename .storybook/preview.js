@@ -17,8 +17,8 @@ export const decorators = [
   (Story, context) => {
     return (
       <>
-        <GlobalStyle />
         <ThemeProvider theme={theme}>
+          <GlobalStyle />
           <MemoryRouter initialEntries={["/"]}>
             <Story {...context} />
           </MemoryRouter>

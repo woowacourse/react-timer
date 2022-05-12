@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import useTimer from "../../hooks/useTimer";
 
-const TimerScreen = ({ remainTime: { hour, minute, second } }) => {
-  const hourText = hour.toString().padStart(2, "0");
-  const minuteText = minute.toString().padStart(2, "0");
-  const secondText = second.toString().padStart(2, "0");
+const TimerScreen = ({ countDownTime }) => {
+  const [remainTime, setRemainTime] = useState(countDownTime);
+
+  // const { elapsed } = useTimer();
+
+  const hourText = remainTime.hour.toString().padStart(2, "0");
+  const minuteText = remainTime.minute.toString().padStart(2, "0");
+  const secondText = remainTime.second.toString().padStart(2, "0");
+
+  // useEffect(() => {
+  // console.log(elapsed);
+  // }, [elapsed]);
+
+  // const elapsedSeconds = Math.floor(elapsed / 1000);
+  // const elapsedMinutes = Math.floor(elapsed / 1000 / 60);
+  // const elapsedHours = Math.floor(elapsed / 1000 / 60 / 60);
+
   return (
     <StyledTimerScreen>
       <div className="blank-space">
@@ -18,7 +32,7 @@ const TimerScreen = ({ remainTime: { hour, minute, second } }) => {
 };
 
 TimerScreen.propTypes = {
-  remainTime: PropTypes.shape({
+  countDownTime: PropTypes.shape({
     hour: PropTypes.number,
     minute: PropTypes.number,
     second: PropTypes.number,
@@ -35,7 +49,7 @@ const StyledTimerScreen = styled.div`
   font-size: 80px;
   font-weight: 400;
   color: ${(props) => props.theme.woowawhite};
-  background-color: ${(props) => props.theme.woowawhite};
+  /* background-color: ${(props) => props.theme.woowawhite}; */
 
   .blank-space {
     background-color: transparent;
