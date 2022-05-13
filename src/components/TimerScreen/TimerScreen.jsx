@@ -7,8 +7,6 @@ const TimerScreen = React.memo(({ hours, minutes, seconds }) => {
   const minuteText = minutes.toString().padStart(2, "0");
   const secondText = seconds.toString().padStart(2, "0");
 
-  console.log("trigger");
-
   return (
     <StyledTimerScreen>
       <div className="blank-space">

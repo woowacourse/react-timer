@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import moment from "moment";
+
+import useCountdown from "./../../hooks/useCountdown";
+
 import TimerScreen from "../../components/TimerScreen/TimerScreen";
 import TimerControlButton from "../../components/TimerControlButton/TimerControlButton";
 import Button from "../../components/Button/Button";
 import SmallButton from "./../../components/SmallButton/SmallButton";
 import Input from "./../../components/Input/Input";
-import moment from "moment";
-import useTimer from "../../hooks/useTimer";
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
 
 const TimeQuickSlotNumber = [3, 5, 10, 15, 20, 30];
@@ -28,19 +30,14 @@ const initialFormState = {
 };
 
 const CountDownPage = () => {
-  const [configuration, setConfiguration] = useState(initialConfiguration);
+  const onFinish = () => {
+    alert("땡땡땡");
+  };
+
+  const { remain, isPaused, start, pause, stop, setConfiguration } =
+    useCountdown({ initialConfiguration, onFinish });
+
   const [formState, setFormState] = useState(initialFormState);
-  const { elapsed, isPaused, start, pause, stop } = useTimer();
-
-  const remain = moment.duration(configuration.targetTime - elapsed);
-  const remainAsMilliseconds = remain.asMilliseconds();
-
-  useEffect(() => {
-    if (!isPaused && remainAsMilliseconds <= 0) {
-      stop();
-      alert("땡땡땡");
-    }
-  }, [isPaused, remainAsMilliseconds, stop]);
 
   return (
     <StyledPageContainer>
@@ -54,8 +51,6 @@ const CountDownPage = () => {
           <TimerControlButton
             controlType={isPaused ? "play" : "pause"}
             onClick={() => {
-              if (remainAsMilliseconds <= 0) return;
-
               isPaused ? start() : pause();
             }}
           />
@@ -106,7 +101,7 @@ const CountDownPage = () => {
               min={0}
               max={23}
               step={1}
-              required="true"
+              required={true}
               value={formState.hours}
               onChange={({ target }) => {
                 if (Number.isNaN(Number(target.value))) return;
@@ -125,7 +120,7 @@ const CountDownPage = () => {
               min={0}
               max={59}
               step={1}
-              required="true"
+              required={true}
               value={formState.minutes}
               onChange={({ target }) => {
                 if (Number.isNaN(Number(target.value))) return;
@@ -144,7 +139,7 @@ const CountDownPage = () => {
               min={0}
               max={59}
               step={1}
-              required="true"
+              required={true}
               value={formState.seconds}
               onChange={({ target }) => {
                 if (Number.isNaN(Number(target.value))) return;
