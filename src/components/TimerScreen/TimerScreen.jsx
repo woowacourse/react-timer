@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import useTimer from "../../hooks/useTimer";
 
-const TimerScreen = ({ countDownTime }) => {
-  const [remainTime, setRemainTime] = useState(countDownTime);
+const TimerScreen = React.memo(({ hours, minutes, seconds }) => {
+  const hourText = hours.toString().padStart(2, "0");
+  const minuteText = minutes.toString().padStart(2, "0");
+  const secondText = seconds.toString().padStart(2, "0");
 
-  // const { elapsed } = useTimer();
-
-  const hourText = remainTime.hour.toString().padStart(2, "0");
-  const minuteText = remainTime.minute.toString().padStart(2, "0");
-  const secondText = remainTime.second.toString().padStart(2, "0");
-
-  // useEffect(() => {
-  // console.log(elapsed);
-  // }, [elapsed]);
-
-  // const elapsedSeconds = Math.floor(elapsed / 1000);
-  // const elapsedMinutes = Math.floor(elapsed / 1000 / 60);
-  // const elapsedHours = Math.floor(elapsed / 1000 / 60 / 60);
+  console.log("trigger");
 
   return (
     <StyledTimerScreen>
@@ -29,14 +18,12 @@ const TimerScreen = ({ countDownTime }) => {
       </div>
     </StyledTimerScreen>
   );
-};
+});
 
 TimerScreen.propTypes = {
-  countDownTime: PropTypes.shape({
-    hour: PropTypes.number,
-    minute: PropTypes.number,
-    second: PropTypes.number,
-  }).isRequired,
+  hours: PropTypes.number.isRequired,
+  minutes: PropTypes.number.isRequired,
+  seconds: PropTypes.number.isRequired,
 };
 
 const StyledTimerScreen = styled.div`

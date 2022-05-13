@@ -1,50 +1,98 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import TimerScreen from "../../components/TimerScreen/TimerScreen";
 import TimerControlButton from "../../components/TimerControlButton/TimerControlButton";
 import Button from "../../components/Button/Button";
 import SmallButton from "./../../components/SmallButton/SmallButton";
 import Input from "./../../components/Input/Input";
+import moment from "moment";
+import useTimer from "../../hooks/useTimer";
+import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
 
 const TimeQuickSlotNumber = [3, 5, 10, 15, 20, 30];
-const initialTime = {
-  hour: 0,
-  minute: 0,
-  second: 0,
+
+const initialConfiguration = {
+  targetTime: moment.duration({
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  }),
+  alarmSound: "Jam Jam",
+};
+
+const initialFormState = {
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+  alarmSound: "Jam Jam",
 };
 
 const CountDownPage = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [configuration, setConfiguration] = useState(initialConfiguration);
+  const [formState, setFormState] = useState(initialFormState);
+  const { elapsed, isPaused, start, pause, stop } = useTimer();
 
-  const [configureTime, setConfigureTime] = useState(initialTime);
+  const remain = moment.duration(configuration.targetTime - elapsed);
+  const remainAsMilliseconds = remain.asMilliseconds();
 
-  const [countDownTime, setCountDownTime] = useState(initialTime);
-
-  const togglePlaying = () => {
-    setIsPlaying((prevIsPlaying) => !prevIsPlaying);
-  };
+  useEffect(() => {
+    if (!isPaused && remainAsMilliseconds <= 0) {
+      stop();
+      alert("땡땡땡");
+    }
+  }, [isPaused, remainAsMilliseconds, stop]);
 
   return (
     <StyledPageContainer>
       <TimerContainer>
-        <TimerScreen countDownTime={{ ...countDownTime }} />
+        <TimerScreen
+          hours={remain.hours()}
+          minutes={remain.minutes()}
+          seconds={remain.seconds()}
+        />
         <div>
           <TimerControlButton
-            controlType={isPlaying ? "pause" : "play"}
+            controlType={isPaused ? "play" : "pause"}
             onClick={() => {
-              togglePlaying();
+              if (remainAsMilliseconds <= 0) return;
+
+              isPaused ? start() : pause();
             }}
           />
-          <TimerControlButton controlType="stop" />
+          <TimerControlButton
+            controlType="stop"
+            onClick={() => {
+              stop();
+            }}
+          />
         </div>
       </TimerContainer>
-      <ConfigurationContainer>
+      <ConfigurationForm
+        onSubmit={(e) => {
+          e.preventDefault();
+          stop();
+          setConfiguration({
+            targetTime: moment.duration({
+              hours: formState.hours,
+              minutes: formState.minutes,
+              seconds: formState.seconds,
+            }),
+            alarmSound: formState.alarmSound,
+          });
+        }}
+      >
         <TimeQuickSlotGrid>
           {TimeQuickSlotNumber.map((number, index) => (
             <SmallButton
+              type="button"
               key={index}
               onClick={() =>
-                setConfigureTime({ hour: 0, minute: number, second: 0 })
+                setFormState((prevFormState) => ({
+                  ...prevFormState,
+                  hours: 0,
+                  minutes: number,
+                  seconds: 0,
+                }))
               }
             >
               {number}
@@ -56,13 +104,16 @@ const CountDownPage = () => {
             <Input
               type="number"
               min={0}
-              max={100}
-              value={configureTime.hour}
+              max={23}
+              step={1}
+              required="true"
+              value={formState.hours}
               onChange={({ target }) => {
                 if (Number.isNaN(Number(target.value))) return;
-                setConfigureTime((prevState) => ({
+
+                setFormState((prevState) => ({
                   ...prevState,
-                  hour: target.value,
+                  hours: target.value,
                 }));
               }}
             />
@@ -72,13 +123,16 @@ const CountDownPage = () => {
             <Input
               type="number"
               min={0}
-              max={60}
-              value={configureTime.minute}
+              max={59}
+              step={1}
+              required="true"
+              value={formState.minutes}
               onChange={({ target }) => {
                 if (Number.isNaN(Number(target.value))) return;
-                setConfigureTime((prevState) => ({
+
+                setFormState((prevState) => ({
                   ...prevState,
-                  minute: target.value,
+                  minutes: target.value,
                 }));
               }}
             />
@@ -88,29 +142,25 @@ const CountDownPage = () => {
             <Input
               type="number"
               min={0}
-              max={60}
-              value={configureTime.second}
+              max={59}
+              step={1}
+              required="true"
+              value={formState.seconds}
               onChange={({ target }) => {
                 if (Number.isNaN(Number(target.value))) return;
-                setConfigureTime((prevState) => ({
+
+                setFormState((prevState) => ({
                   ...prevState,
-                  second: target.value,
+                  seconds: target.value,
                 }));
               }}
             />
             초
           </label>
         </TimeSettingContainer>
-        <div>
-          <Button
-            onClick={() => {
-              setCountDownTime({ ...configureTime });
-            }}
-          >
-            설정
-          </Button>
-        </div>
-      </ConfigurationContainer>
+        <DropdownMenu />
+        <Button type="submit">설정</Button>
+      </ConfigurationForm>
     </StyledPageContainer>
   );
 };
@@ -129,7 +179,7 @@ const TimerContainer = styled.div`
   gap: 2rem;
 `;
 
-const ConfigurationContainer = styled.div`
+const ConfigurationForm = styled.form`
   width: 100%;
   flex: 2;
   display: flex;

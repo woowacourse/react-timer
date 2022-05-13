@@ -26,7 +26,6 @@ const DropdownMenu = () => {
 
   const toggle = () => {
     setIsMenuOpened((prevIsMenuOpened) => !prevIsMenuOpened);
-    console.log(isMenuOpened);
   };
 
   const select = (option) => {
@@ -92,7 +91,8 @@ const DropdownMenu = () => {
 };
 
 const StyledDropdown = styled.div`
-  width: 200px;
+  width: 100%;
+  position: relative;
 `;
 
 const StyledDropdownButton = styled.div`
@@ -114,6 +114,7 @@ const StyledDropdownButton = styled.div`
 
 const StyledDropdownMenu = styled.div`
   width: 100%;
+  position: absolute;
   box-sizing: border-box;
   z-index: 10;
   visibility: hidden;

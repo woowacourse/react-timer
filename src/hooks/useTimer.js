@@ -1,42 +1,54 @@
-import { useState, useRef, useEffect } from "react";
-import { differenceInMilliseconds, sub } from "date-fns";
+import moment from "moment";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 const useTimer = () => {
-  const startDate = useRef(new Date());
-  const [elapsed, setElapsed] = useState(0);
   const requestAnimationRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(true);
+  const [startDateMilliSeconds, setStartDateMilliSeconds] = useState(
+    Date.now()
+  );
+  const [elapsed, setElapsed] = useState(0);
+  const [lastElapsed, setLastElapsed] = useState(0);
 
-  const getElapsed = () => {
-    const currentDate = new Date();
-    const elapseMilliseconds = differenceInMilliseconds(
-      currentDate,
-      startDate.current
-    );
+  const getElapsed = useCallback(() => {
+    const currentDateMilliSeconds = Date.now();
+    const elapsedMilliSeconds =
+      lastElapsed + currentDateMilliSeconds - startDateMilliSeconds;
 
-    // const elapsedSeconds = Math.floor(elapseMilliseconds / 1000);
-    // const elapsedMinutes = Math.floor(elapseMilliseconds / 1000 / 60);
-    // const elapsedHours = Math.floor(elapseMilliseconds / 1000 / 60 / 60);
-    setElapsed(elapseMilliseconds);
-  };
+    setElapsed(elapsedMilliSeconds);
+  }, [lastElapsed, startDateMilliSeconds]);
 
   useEffect(() => {
-    requestAnimationRef.current = requestAnimationFrame(getElapsed);
+    if (!isPaused) {
+      requestAnimationRef.current = requestAnimationFrame(getElapsed);
+    }
 
     return () => {
       cancelAnimationFrame(requestAnimationRef.current);
     };
-  });
+  }, [requestAnimationRef.current, isPaused, getElapsed]);
 
   return {
-    elapsed,
+    elapsed: moment.duration(elapsed),
+    isPaused,
     start: () => {
-      startDate.current = new Date();
+      if (!isPaused) return;
+
+      setIsPaused(false);
+      setStartDateMilliSeconds(Date.now());
     },
     pause: () => {
+      if (isPaused) return;
+
+      setIsPaused(true);
       cancelAnimationFrame(requestAnimationRef.current);
+      setLastElapsed(elapsed);
     },
     stop: () => {
+      setIsPaused(true);
       cancelAnimationFrame(requestAnimationRef.current);
+      setElapsed(0);
+      setLastElapsed(0);
     },
   };
 };
