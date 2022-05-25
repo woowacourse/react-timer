@@ -20,8 +20,8 @@ const StyledButton = styled.button`
   font-weight: 400;
   line-height: 52px;
   border-radius: 50px;
-  background-color: ${(props) => props.theme.woowawhite};
-  color: ${(props) => props.theme.woowablack};
+  background-color: ${({ theme }) => theme.woowawhite};
+  color: ${({ theme }) => theme.woowablack};
 
   &:hover {
     cursor: pointer;

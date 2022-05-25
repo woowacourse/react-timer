@@ -61,7 +61,7 @@ const StyledButton = styled.button`
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  color: ${(props) => props.theme.woowawhite};
+  color: ${({ theme }) => theme.woowawhite};
   background-color: transparent;
 
   &:hover {

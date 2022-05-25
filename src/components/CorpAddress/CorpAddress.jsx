@@ -10,7 +10,7 @@ const StyledAddress = styled.address`
   font-weight: 300;
   line-height: 22px;
   text-align: center;
-  color: ${(props) => props.theme.woowawhite};
+  color: ${({ theme }) => theme.woowawhite};
 `;
 
 export default CorpAddress;

@@ -22,10 +22,10 @@ const StyledButton = styled.button`
   font-size: 32px;
   font-weight: 400;
 
-  border: 1px solid ${(props) => props.theme.woowalightgreen};
+  border: 1px solid ${({ theme }) => theme.woowalightgreen};
   border-radius: 4px;
 
-  color: ${(props) => props.theme.woowalightgreen};
+  color: ${({ theme }) => theme.woowalightgreen};
   background-color: rgba(255, 255, 255, 0);
 
   &:hover {
@@ -35,7 +35,7 @@ const StyledButton = styled.button`
 
   &:active {
     background-color: rgba(255, 255, 255, 1);
-    color: ${(props) => props.theme.woowagreen};
+    color: ${({ theme }) => theme.woowagreen};
   }
 `;
 

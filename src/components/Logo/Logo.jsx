@@ -26,7 +26,7 @@ const StyledTitle = styled.h1`
   font-weight: 700;
   vertical-align: middle;
   line-height: 58px;
-  color: ${(props) => props.theme.woowawhite};
+  color: ${({ theme }) => theme.woowawhite};
 
   .icon {
     width: 30px;

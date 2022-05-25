@@ -33,8 +33,7 @@ const StyledTimerScreen = styled.div`
   align-items: center;
   font-size: 80px;
   font-weight: 400;
-  color: ${(props) => props.theme.woowawhite};
-  /* background-color: ${(props) => props.theme.woowawhite}; */
+  color: ${({ theme }) => theme.woowawhite};
 
   .blank-space {
     background-color: transparent;
