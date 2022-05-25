@@ -16,14 +16,12 @@ export const parameters = {
 export const decorators = [
   (Story, context) => {
     return (
-      <>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <MemoryRouter initialEntries={["/"]}>
-            <Story {...context} />
-          </MemoryRouter>
-        </ThemeProvider>
-      </>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <MemoryRouter initialEntries={["/"]}>
+          <Story {...context} />
+        </MemoryRouter>
+      </ThemeProvider>
     );
   },
 ];
