@@ -6,15 +6,13 @@ export default {
   component: TimerScreen,
 };
 
-const Template = ({ remainTime, ...args }) => (
-  <TimerScreen remainTime={remainTime} {...args}></TimerScreen>
+const Template = ({ hours, minutes, seconds, ...args }) => (
+  <TimerScreen hours={hours} minutes={minutes} seconds={seconds} {...args} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  remainTime: {
-    hour: 1,
-    minute: 19,
-    second: 45,
-  },
+  hours: 1,
+  minutes: 19,
+  seconds: 45,
 };
