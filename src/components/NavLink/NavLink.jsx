@@ -25,10 +25,6 @@ const StyledLink = styled(Link)`
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
 
-  &.selected {
-    color: rgba(255, 255, 255, 1);
-  }
-
   &:hover {
     color: rgba(255, 255, 255, 1);
   }
