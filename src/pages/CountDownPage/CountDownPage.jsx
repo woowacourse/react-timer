@@ -39,6 +39,36 @@ const CountDownPage = () => {
 
   const [formState, setFormState] = useState(initialFormState);
 
+  const handleSubmitConfiguration = (e) => {
+    e.preventDefault();
+    stop();
+    setConfiguration({
+      targetTime: moment.duration({
+        hours: formState.hours,
+        minutes: formState.minutes,
+        seconds: formState.seconds,
+      }),
+      alarmSound: formState.alarmSound,
+    });
+  };
+
+  const handleClickTimerControlButton = (number) => () =>
+    setFormState((prevFormState) => ({
+      ...prevFormState,
+      hours: 0,
+      minutes: number,
+      seconds: 0,
+    }));
+
+  const handleChangeInput = ({ target }) => {
+    if (Number.isNaN(Number(target.value))) return;
+
+    setFormState((prevState) => ({
+      ...prevState,
+      [target.name]: target.value,
+    }));
+  };
+
   return (
     <StyledPageContainer>
       <TimerContainer>
@@ -62,33 +92,13 @@ const CountDownPage = () => {
           />
         </div>
       </TimerContainer>
-      <ConfigurationForm
-        onSubmit={(e) => {
-          e.preventDefault();
-          stop();
-          setConfiguration({
-            targetTime: moment.duration({
-              hours: formState.hours,
-              minutes: formState.minutes,
-              seconds: formState.seconds,
-            }),
-            alarmSound: formState.alarmSound,
-          });
-        }}
-      >
+      <ConfigurationForm onSubmit={handleSubmitConfiguration}>
         <TimeQuickSlotGrid>
           {TimeQuickSlotNumber.map((number, index) => (
             <SmallButton
               type="button"
               key={index}
-              onClick={() =>
-                setFormState((prevFormState) => ({
-                  ...prevFormState,
-                  hours: 0,
-                  minutes: number,
-                  seconds: 0,
-                }))
-              }
+              onClick={handleClickTimerControlButton(number)}
             >
               {number}
             </SmallButton>
@@ -97,58 +107,40 @@ const CountDownPage = () => {
         <TimeSettingContainer>
           <label>
             <Input
+              name="hours"
               type="number"
               min={0}
               max={23}
               step={1}
               required={true}
               value={formState.hours}
-              onChange={({ target }) => {
-                if (Number.isNaN(Number(target.value))) return;
-
-                setFormState((prevState) => ({
-                  ...prevState,
-                  hours: target.value,
-                }));
-              }}
+              onChange={handleChangeInput}
             />
             시
           </label>
           <label>
             <Input
+              name="minutes"
               type="number"
               min={0}
               max={59}
               step={1}
               required={true}
               value={formState.minutes}
-              onChange={({ target }) => {
-                if (Number.isNaN(Number(target.value))) return;
-
-                setFormState((prevState) => ({
-                  ...prevState,
-                  minutes: target.value,
-                }));
-              }}
+              onChange={handleChangeInput}
             />
             분
           </label>
           <label>
             <Input
+              name="seconds"
               type="number"
               min={0}
               max={59}
               step={1}
               required={true}
               value={formState.seconds}
-              onChange={({ target }) => {
-                if (Number.isNaN(Number(target.value))) return;
-
-                setFormState((prevState) => ({
-                  ...prevState,
-                  seconds: target.value,
-                }));
-              }}
+              onChange={handleChangeInput}
             />
             초
           </label>
