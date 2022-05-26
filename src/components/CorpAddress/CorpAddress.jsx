@@ -1,8 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { PropTypes } from "prop-types";
 
 const CorpAddress = ({ children }) => {
   return <StyledAddress>{children}</StyledAddress>;
+};
+
+CorpAddress.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 const StyledAddress = styled.address`

@@ -1,7 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledBlah = styled.div`
+const RadialTimer = () => (
+  <StyledRadialTimerContainer>
+    <div className="countdown-number">10</div>
+    <svg>
+      <circle r="18" cx="20" cy="20"></circle>
+    </svg>
+  </StyledRadialTimerContainer>
+);
+
+const StyledRadialTimerContainer = styled.div`
   position: relative;
   margin: auto;
   margin-top: 100px;
@@ -43,14 +52,5 @@ const StyledBlah = styled.div`
     }
   }
 `;
-
-const RadialTimer = () => (
-  <StyledBlah>
-    <div className="countdown-number">10</div>
-    <svg>
-      <circle r="18" cx="20" cy="20"></circle>
-    </svg>
-  </StyledBlah>
-);
 
 export default RadialTimer;
