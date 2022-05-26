@@ -20,14 +20,14 @@ const useCountdown = ({ initialConfiguration, onFinish }) => {
     remain,
     isPaused,
     start: () => {
-      if (remainAsMilliseconds <= 0) return;
-
-      start();
+      if (remainAsMilliseconds > 0) {
+        start();
+      }
     },
     pause: () => {
-      if (remainAsMilliseconds <= 0) return;
-
-      pause();
+      if (remainAsMilliseconds > 0) {
+        pause();
+      }
     },
     stop,
     setConfiguration,
