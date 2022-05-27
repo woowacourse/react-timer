@@ -32,9 +32,6 @@ const ModalMessage = styled.div`
 `;
 
 const TimerPage = () => {
-  // const [time, setTime] = useState(0);
-  // const [isRunning, setIsRunning] = useState(false);
-
   const {
     time,
     timerId,
@@ -52,34 +49,6 @@ const TimerPage = () => {
     modalOpen && audioRef.current.pause();
     return !modalOpen;
   }, false);
-
-  // const startTimer = () => {
-  //   setIsRunning(true);
-  //   timerId.current = setInterval(() => {
-  //     setTime((prev) => prev - 1);
-  //   }, 1000);
-  // };
-
-  // const stopTimer = () => {
-  //   clearInterval(timerId.current);
-  //   setIsRunning(false);
-  // };
-
-  // const modifyTimer = () => {
-  //   const newMinute = prompt('몇 분를 셀 것인지 입력해주세요');
-  //   const newSecond = prompt('몇 초를 셀 것인지 입력해주세요');
-
-  //   const calcSecond = Number(newMinute) * 60 + Number(newSecond);
-  //   setTime(calcSecond);
-
-  //   initialTime.current = calcSecond;
-  // };
-
-  // const resetTimer = () => {
-  //   setTime(initialTime.current);
-  //   clearInterval(timerId.current);
-  //   setIsRunning(false);
-  // };
 
   const onClickRestart = () => {
     toggleModal();
