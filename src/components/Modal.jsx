@@ -11,8 +11,7 @@ const Dimmer = styled.div`
   align-items: center;
 
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
 
   background: rgba(0, 0, 0, 0.5);
 `;
