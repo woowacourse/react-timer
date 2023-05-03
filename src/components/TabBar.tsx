@@ -1,10 +1,11 @@
 import worldTimeButtonImage from '../asset/world_time.png';
 import timerButtonImage from '../asset/timer.png';
 import stopWatchButtonImage from '../asset/stop_watch.png';
+import './TabBar.css';
 
 const TabBar = () => {
   return (
-    <div>
+    <div className="tab-bar">
       <button>
         <img src={worldTimeButtonImage} alt="world-time-button" />
       </button>

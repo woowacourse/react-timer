@@ -1,3 +1,7 @@
+:root {
+  --primary-gray-blur-border: rgba(138, 140, 138, 0.5);
+}
+
 * {
-  font-family: 'BM JUA';
+  font-family: 'BM JUA', sans-serif;
 }
