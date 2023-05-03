@@ -4,9 +4,9 @@ import { ReactComponent as StopWatch } from '../assets/icons/stopwatch.svg';
 import { ReactComponent as Timer } from '../assets/icons/timer.svg';
 
 const NAV_ICONS = {
-  세계시계: <Global />,
-  스톱워치: <StopWatch />,
-  타이머: <Timer />,
+  세계시계: <Global width='50px' height='50px' />,
+  스톱워치: <StopWatch width='50px' height='50px' />,
+  타이머: <Timer width='50px' height='50px' />,
 };
 
 type NavIconProps = {

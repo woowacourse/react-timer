@@ -1,7 +1,7 @@
 ## UI 구현
 
-- [ ] header
-- [ ] navbar
+- [x] header
+- [x] navbar
 - [ ] button
   - [ ] quickTimerButton
   - [ ] controlButton

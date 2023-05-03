@@ -4,13 +4,13 @@ type HeaderProps = {
   title: string;
 };
 
-function Header({ title }: HeaderProps) {
+const Header = ({ title }: HeaderProps) => {
   return (
     <Container>
       <Title>{title}</Title>
     </Container>
   );
-}
+};
 
 const Container = styled.div`
   background-color: var(--green-300);
