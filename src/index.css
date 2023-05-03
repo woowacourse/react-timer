@@ -1,5 +1,10 @@
 :root {
   --primary-gray-blur-border: rgba(138, 140, 138, 0.5);
+  --primary-dark: #1f203b;
+  --primary-gray: #8a8c9a;
+  --primary-light: #ebecfc;
+  --primary-red: #d82525;
+  --primary-green: #21a326;
 }
 
 * {
