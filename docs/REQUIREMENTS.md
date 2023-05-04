@@ -5,5 +5,5 @@
 - [x] button
   - [x] quickTimerButton
   - [x] controlButton
-- [ ] worldDigitalClock
+- [x] worldDigitalClock
 - [ ] lapTable
