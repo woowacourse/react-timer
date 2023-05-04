@@ -2,8 +2,8 @@
 
 - [x] header
 - [x] navbar
-- [ ] button
-  - [ ] quickTimerButton
-  - [ ] controlButton
+- [x] button
+  - [x] quickTimerButton
+  - [x] controlButton
 - [ ] worldDigitalClock
 - [ ] lapTable
