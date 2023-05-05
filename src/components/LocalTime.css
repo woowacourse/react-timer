@@ -1,0 +1,46 @@
+.local-time-box {
+  width: 350px;
+  background-color: var(--primary-light);
+  border-radius: 10px;
+  padding: 7px;
+}
+.local-time-YYMMDD {
+  display: flex;
+  justify-content: center;
+}
+
+.blank-box {
+  height: 30px;
+}
+
+.local-time-HHMMSS {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.local-time-location {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.local-time-except-location {
+  font-size: 45px;
+}
+
+.local-time-seconds {
+  font-size: 30px;
+}
+
+.world-time-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.local-time-gap {
+  font-size: 9px;
+  color: var(--primary-gray);
+}
