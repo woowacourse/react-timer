@@ -1,5 +1,16 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import WorldDigaitalClockPage from './pages/WorldDigaitalClockPage';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <WorldDigaitalClockPage />,
+    children: [],
+  },
+]);
+
 function App() {
-  return <div className='App'></div>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
