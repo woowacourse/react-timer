@@ -1,17 +1,16 @@
+import { Outlet } from 'react-router';
 import Header from './components/Header';
 import TabBar from './components/TabBar';
+import './Layout.css';
 
-import './App.css';
-import WorldTimePage from './pages/WorldTime';
-
-function App() {
+const Layout = () => {
   return (
     <div className="app">
       <Header title="스톱워치" />
-      <WorldTimePage />
+      <Outlet />
       <TabBar />
     </div>
   );
-}
+};
 
-export default App;
+export default Layout;
