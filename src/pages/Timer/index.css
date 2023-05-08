@@ -1,0 +1,50 @@
+.timer-page {
+  display: flex;
+  flex-direction: column;
+  width: 362px;
+  align-items: center;
+  margin-top: 66px;
+}
+
+.timer-page p {
+  margin: 0;
+}
+
+.time-display {
+  font-size: 46px;
+  color: var(--primary-dark);
+}
+
+.select-min-button {
+  margin-top: 30px;
+  width: 70px;
+  height: 40px;
+  font-size: 24px;
+  border-radius: 10px;
+  border: none;
+  background: #ebecfc;
+}
+
+.select-user-button {
+  margin-top: 20px;
+  width: 115px;
+  height: 40px;
+  font-size: 24px;
+  border-radius: 10px;
+  border: none;
+  background: #ebecfc;
+}
+
+.select-min-container {
+  width: 362px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.start-button {
+  margin-top: 107px;
+  font-size: 34px;
+  background: none;
+  border: none;
+  color: var(--primary-green);
+}
