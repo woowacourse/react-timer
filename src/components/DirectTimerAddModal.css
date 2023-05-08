@@ -1,0 +1,44 @@
+.modal-backdrop {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.modal-backdrop-main {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(217, 217, 217, 0.5);
+  top: 0;
+  left: 0;
+  animation: view-backdrop 1s;
+}
+
+@keyframes view-backdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.timer-modal {
+  position: fixed;
+  width: 348px;
+  height: 295px;
+  background: #ffffff;
+  animation: view-modal 0.5s;
+}
+
+@keyframes view-modal {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}

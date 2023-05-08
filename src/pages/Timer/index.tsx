@@ -1,3 +1,4 @@
+import DirectTimerAddModal from '../../components/DirectTimerAddModal';
 import './index.css';
 
 const TimerPage = () => {
@@ -24,6 +25,7 @@ const TimerPage = () => {
       <button type="button" className="start-button">
         시 작
       </button>
+      <DirectTimerAddModal />
     </div>
   );
 };
