@@ -57,12 +57,13 @@ const Wrapper = styled.div`
 `;
 
 const Clock = styled.div<{ showDate: boolean }>`
-  font-size: ${({ showDate }) => (showDate ? '42px' : '24px')};
-  font-family: 'Digital Numbers Regular !important';
+  font-size: ${({ showDate }) => (showDate ? '36px' : '24px')};
+  font-family: 'DigitalClock';
 `;
 
 const DateBlock = styled.div`
   color: #ff003d;
+  padding: 16px;
 `;
 
 export default DigitalClock;

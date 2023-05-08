@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
 
-  padding: 36px 0px;
+  padding: 24px 0px;
 `;
 
 const WorldDigitalClockWrapper = styled.div`
