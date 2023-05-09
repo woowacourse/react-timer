@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import StopWatchPage from './pages/StopWatchPage';
 import WorldDigaitalClockPage from './pages/WorldDigaitalClockPage';
+import TimerPage from './pages/TimerPage';
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
   {
     path: '/stop-watch',
     element: <StopWatchPage />,
+  },
+  {
+    path: '/timer',
+    element: <TimerPage />,
   },
 ]);
 
