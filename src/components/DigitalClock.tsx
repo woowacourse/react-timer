@@ -64,6 +64,7 @@ const Clock = styled.div<{ showDate: boolean }>`
 const DateBlock = styled.div`
   color: #ff003d;
   padding: 16px;
+  font-family: 'DigitalClock';
 `;
 
 export default DigitalClock;

@@ -9,8 +9,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 };
 
 const LayoutWrapper = styled.div`
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,6 +21,7 @@ const LayoutWrapper = styled.div`
 const LayoutContent = styled.div`
   position: relative;
   width: 360px;
+  max-height: 844px;
   margin: 40px 0;
   height: 100%;
   border-radius: 12px;
