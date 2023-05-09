@@ -1,12 +1,19 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import NavIcon from './NavIcon';
 
 const NavBar = () => {
   return (
     <Container>
-      <NavIcon title='세계시계'></NavIcon>
-      <NavIcon title='스톱워치'></NavIcon>
-      <NavIcon title='타이머'></NavIcon>
+      <Link to='/'>
+        <NavIcon title='세계시계'></NavIcon>
+      </Link>
+      <Link to='/stop-watch'>
+        <NavIcon title='스톱워치'></NavIcon>
+      </Link>
+      <Link to='/timer'>
+        <NavIcon title='타이머'></NavIcon>
+      </Link>
     </Container>
   );
 };

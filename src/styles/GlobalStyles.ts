@@ -23,6 +23,10 @@ const GlobalStyle = createGlobalStyle`
       font-family: "DigitalClock";
       src: url("${DigitalClockFont}");
   }
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export default GlobalStyle;
