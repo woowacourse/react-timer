@@ -1,26 +1,20 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import StopWatchPage from './pages/StopWatchPage';
-import WorldDigaitalClockPage from './pages/WorldDigaitalClockPage';
-import TimerPage from './pages/TimerPage';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <WorldDigaitalClockPage />,
-    children: [],
-  },
-  {
-    path: '/stop-watch',
-    element: <StopWatchPage />,
-  },
-  {
-    path: '/timer',
-    element: <TimerPage />,
-  },
-]);
+import { Outlet } from 'react-router-dom';
+import Header from './components/Header';
+import Layout from './components/Layout';
+import NavBar from './components/NavBar';
+import GlobalStyle from './styles/GlobalStyles';
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <GlobalStyle />
+      <Layout>
+        <Header />
+        <Outlet />
+        <NavBar />
+      </Layout>
+    </>
+  );
 }
 
 export default App;

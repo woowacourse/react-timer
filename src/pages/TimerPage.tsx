@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import Header from '../components/Header';
-import NavBar from '../components/NavBar';
 import ControlButton from '../components/common/ControlButton';
 import { ReactComponent as ClockIcon } from '../assets/icons/clock.svg';
 import QuickTimerButton from '../components/common/QuickTimerButton';
@@ -8,7 +6,6 @@ import QuickTimerButton from '../components/common/QuickTimerButton';
 const TimerPage = () => {
   return (
     <>
-      <Header title='타이머' />
       <Wrapper>
         <ClockWrapper>
           <ClockIcon />
@@ -24,7 +21,6 @@ const TimerPage = () => {
           <ControlButton text='시작' onClick={() => {}} />
         </ButtonWrapper>
       </Wrapper>
-      <NavBar />
     </>
   );
 };

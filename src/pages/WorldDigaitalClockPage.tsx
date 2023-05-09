@@ -1,4 +1,3 @@
-import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import WorldDigtalClock from '../components/WorldDigtalClock';
 import { ReactComponent as WorldMap } from '../assets/world-map.svg';
@@ -8,7 +7,6 @@ import DigitalClock from '../components/DigitalClock';
 const WorldDigaitalClockPage = () => {
   return (
     <>
-      <Header title='세계시계' />
       <Wrapper>
         <WorldMap width='90%' />
       </Wrapper>

@@ -1,13 +1,18 @@
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-type HeaderProps = {
-  title: string;
+const HeaderTitle = {
+  '/': '세계시계',
+  '/timer': '타이머',
+  '/stop-watch': '스톱워치',
 };
 
-const Header = ({ title }: HeaderProps) => {
+const Header = () => {
+  const { pathname } = useLocation();
+
   return (
     <Container>
-      <Title>{title}</Title>
+      <Title>{HeaderTitle[pathname as keyof typeof HeaderTitle]}</Title>
     </Container>
   );
 };

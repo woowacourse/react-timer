@@ -1,4 +1,3 @@
-import Header from '../components/Header';
 import NavBar from '../components/NavBar';
 import LapTable from '../components/LapTable';
 import { ReactComponent as ClockIcon } from '../assets/icons/clock.svg';
@@ -8,7 +7,6 @@ import ControlButton from '../components/common/ControlButton';
 const StopWatchPage = () => {
   return (
     <>
-      <Header title='스톱워치' />
       <Wrapper>
         <ClockWrapper>
           <ClockIcon />
