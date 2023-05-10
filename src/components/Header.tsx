@@ -23,6 +23,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   padding: 20px;
+  flex: 0 0 60px;
 `;
 
 const Title = styled.h1`

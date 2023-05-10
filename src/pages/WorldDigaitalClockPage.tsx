@@ -1,4 +1,3 @@
-import NavBar from '../components/NavBar';
 import WorldDigtalClock from '../components/WorldDigtalClock';
 import { ReactComponent as WorldMap } from '../assets/world-map.svg';
 import styled from 'styled-components';
@@ -16,7 +15,6 @@ const WorldDigaitalClockPage = () => {
         <WorldDigtalClock country='London' />
         <WorldDigtalClock country='Toronto' />
       </WorldDigitalClockWrapper>
-      <NavBar />
     </>
   );
 };

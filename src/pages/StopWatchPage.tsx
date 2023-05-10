@@ -1,4 +1,3 @@
-import NavBar from '../components/NavBar';
 import LapTable from '../components/LapTable';
 import { ReactComponent as ClockIcon } from '../assets/icons/clock.svg';
 import styled from 'styled-components';
@@ -7,29 +6,18 @@ import ControlButton from '../components/common/ControlButton';
 const StopWatchPage = () => {
   return (
     <>
-      <Wrapper>
-        <ClockWrapper>
-          <ClockIcon />
-          <Clock>00:00.00</Clock>
-        </ClockWrapper>
-        <ButtonWrapper>
-          <ControlButton text='랩' onClick={() => {}} />
-          <ControlButton text='시작' onClick={() => {}} />
-        </ButtonWrapper>
-        <LapTable />
-      </Wrapper>
-      <NavBar />
+      <ClockWrapper>
+        <ClockIcon />
+        <Clock>00:00.00</Clock>
+      </ClockWrapper>
+      <ButtonWrapper>
+        <ControlButton text='랩' onClick={() => {}} />
+        <ControlButton text='시작' onClick={() => {}} />
+      </ButtonWrapper>
+      <LapTable />
     </>
   );
 };
-
-const Wrapper = styled.div`
-  padding: 0px 24px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
 
 const ClockWrapper = styled.div`
   position: relative;

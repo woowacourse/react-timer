@@ -19,15 +19,16 @@ const NavBar = () => {
 };
 
 const Container = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--green-300);
-  height: 92px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  width: 100%;
+  height: 92px;
+
+  background-color: var(--green-300);
   padding: 20px;
+  flex: 0 0 92px;
 `;
 
 export default NavBar;

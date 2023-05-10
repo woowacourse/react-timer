@@ -32,8 +32,7 @@ const WorldDigtalClock = ({ country }: WorldDigtalClockProps) => {
 
 const Container = styled.div`
   width: 100%;
-  padding: 16px;
-
+  padding: 16px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

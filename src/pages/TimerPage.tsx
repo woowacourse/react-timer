@@ -6,33 +6,22 @@ import QuickTimerButton from '../components/common/QuickTimerButton';
 const TimerPage = () => {
   return (
     <>
-      <Wrapper>
-        <ClockWrapper>
-          <ClockIcon />
-          <Clock>00:00:00</Clock>
-        </ClockWrapper>
-        <ButtonWrapper>
-          <QuickTimerButton text='3' onClick={() => {}} />
-          <QuickTimerButton text='5' onClick={() => {}} />
-          <QuickTimerButton text='10' onClick={() => {}} />
-        </ButtonWrapper>
-        <ButtonWrapper>
-          <ControlButton text='취소' onClick={() => {}} />
-          <ControlButton text='시작' onClick={() => {}} />
-        </ButtonWrapper>
-      </Wrapper>
+      <ClockWrapper>
+        <ClockIcon />
+        <Clock>00:00:00</Clock>
+      </ClockWrapper>
+      <ButtonWrapper>
+        <QuickTimerButton text='3' onClick={() => {}} />
+        <QuickTimerButton text='5' onClick={() => {}} />
+        <QuickTimerButton text='10' onClick={() => {}} />
+      </ButtonWrapper>
+      <ButtonWrapper>
+        <ControlButton text='취소' onClick={() => {}} />
+        <ControlButton text='시작' onClick={() => {}} />
+      </ButtonWrapper>
     </>
   );
 };
-
-const Wrapper = styled.div`
-  padding: 0px 24px;
-  height: 80%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
 
 const Clock = styled.span`
   position: absolute;

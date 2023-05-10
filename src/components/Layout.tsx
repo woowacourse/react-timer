@@ -1,9 +1,15 @@
 import styled from 'styled-components';
+import Header from './Header';
+import NavBar from './NavBar';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <LayoutWrapper>
-      <LayoutContent>{children}</LayoutContent>
+      <LayoutContent>
+        <Header />
+        <Wrapper>{children}</Wrapper>
+        <NavBar />
+      </LayoutContent>
     </LayoutWrapper>
   );
 };
@@ -19,14 +25,23 @@ const LayoutWrapper = styled.div`
 `;
 
 const LayoutContent = styled.div`
-  position: relative;
-  width: 360px;
-  max-height: 844px;
-  margin: 40px 0;
-  height: 100%;
-  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 390px;
+  height: 844px;
+
   background-color: #fff;
-  overflow-y: auto;
+`;
+
+const Wrapper = styled.div`
+  flex: 1;
+
+  width: 100%;
+
+  padding: 0px 24px;
+
+  overflow: scroll;
 `;
 
 export default Layout;
