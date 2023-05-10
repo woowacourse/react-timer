@@ -1,8 +1,16 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const LapTable = () => {
-  const [laps, setLaps] = useState([]);
+type Lap = {
+  id: number;
+  time: number;
+};
+
+type LapTableProps = {
+  laps: Lap[];
+};
+
+const LapTable = ({ laps }: LapTableProps) => {
   return (
     <Table>
       <thead>
@@ -13,13 +21,24 @@ const LapTable = () => {
         </tr>
       </thead>
       <tbody>
-        {laps.map((lapTime, index) => (
-          <tr key={index}>
-            <td>{index + 1}</td>
-            <td>{new Date(lapTime).toISOString().slice(14, -1)}</td>
-            <td>{new Date(lapTime).toISOString().slice(14, -1)}</td>
-          </tr>
-        ))}
+        {laps.map((lap, index, array) => {
+          const interval = index === 0 ? 0 : lap.time - array[index - 1]?.time;
+          return (
+            <tr key={lap.id}>
+              <td>Lap {lap.id}</td>
+              <td>
+                {('0' + Math.floor((interval / 60000) % 60)).slice(-2)}:
+                {('0' + Math.floor((interval / 1000) % 60)).slice(-2)}.
+                {('0' + ((interval / 10) % 100)).slice(-2)}
+              </td>
+              <td>
+                {('0' + Math.floor((lap.time / 60000) % 60)).slice(-2)}:
+                {('0' + Math.floor((lap.time / 1000) % 60)).slice(-2)}.
+                {('0' + ((lap.time / 10) % 100)).slice(-2)}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </Table>
   );
