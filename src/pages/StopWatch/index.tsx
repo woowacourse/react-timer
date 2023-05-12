@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './index.css';
 import { numberDataChangeTwo, numberDataChangeMS } from '../../utils/numberTypeChange';
 
@@ -62,7 +62,7 @@ const StopWatchPage = () => {
   useEffect(() => {
     let intervalId: NodeJS.Timer;
     if (status === 'RUNNING') {
-      intervalId = setInterval(() => setTime(time + 1), 11);
+      intervalId = setInterval(() => setTime(time + 1), 10);
     }
     return () => clearInterval(intervalId);
   }, [status, time]);
@@ -72,7 +72,7 @@ const StopWatchPage = () => {
   const second = Math.floor((time % 6000) / 100);
   const ms = time % 100;
 
-  const handleStartAndStopButton = () => {
+  const handleStartAndStopButton = useCallback(() => {
     switch (status) {
       case 'INIT':
         setStatus('RUNNING');
@@ -84,9 +84,9 @@ const StopWatchPage = () => {
         setStatus('RUNNING');
         break;
     }
-  };
+  }, [status]);
 
-  const handleLapButton = () => {
+  const handleLapButton = useCallback(() => {
     switch (status) {
       case 'INIT':
         break;
@@ -97,7 +97,7 @@ const StopWatchPage = () => {
         setTime(0);
         break;
     }
-  };
+  }, [laps, hour, minute, second, ms, status]);
 
   return (
     <div className="stop-watch-page">
@@ -150,4 +150,4 @@ const StopWatchPage = () => {
   );
 };
 
-export default StopWatchPage;
+export default React.memo(StopWatchPage);

@@ -48,3 +48,25 @@
   border: none;
   color: var(--primary-green);
 }
+
+.reset-button {
+  margin-top: 107px;
+  font-size: 34px;
+  background: none;
+  border: none;
+  color: var(--primary-dark);
+}
+
+.pause-button {
+  margin-top: 107px;
+  font-size: 34px;
+  background: none;
+  border: none;
+  color: var(--primary-red);
+}
+
+.button-box {
+  display: flex;
+  width: 362px;
+  justify-content: space-around;
+}
