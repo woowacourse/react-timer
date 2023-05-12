@@ -11,3 +11,13 @@
 * {
   font-family: 'BM JUA', sans-serif;
 }
+
+header {
+  /* position: absolute;
+  top: 0; */
+  font-size: 36px;
+  padding: 20px 0;
+  width: 360px;
+  text-align: center;
+  border: 1px solid var(--primary-gray-blur-border);
+}

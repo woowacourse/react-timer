@@ -40,7 +40,6 @@ const TimerPage = () => {
       alert('시간을 설정하세요');
       return;
     }
-    console.log(audioRef.current);
     setIsRunning(true);
   };
 
@@ -54,50 +53,53 @@ const TimerPage = () => {
   };
 
   return (
-    <div className="timer-page">
-      <p className="time-display">{`${numberDataChangeTwo(hour)}:${numberDataChangeTwo(
-        min
-      )}:${numberDataChangeTwo(second)}`}</p>
-      <div className="select-min-container">
-        <button type="button" className="select-min-button" onClick={() => buttonHandler(1)}>
-          1분
-        </button>
-        <button type="button" className="select-min-button" onClick={() => buttonHandler(3)}>
-          3분
-        </button>
-        <button type="button" className="select-min-button" onClick={() => buttonHandler(10)}>
-          10분
-        </button>
-        <button type="button" className="select-min-button" onClick={() => buttonHandler(15)}>
-          15분
-        </button>
-      </div>
-      <button
-        type="button"
-        className="select-user-button"
-        onClick={() => {
-          setIsModalOpen(true);
-        }}
-      >
-        직접 추가
-      </button>
-      {isRunning ? (
-        <div className="button-box">
-          <button className="reset-button" onClick={handleResetButton}>
-            초기화
+    <>
+      <header>타이머</header>
+      <div className="timer-page">
+        <p className="time-display">{`${numberDataChangeTwo(hour)}:${numberDataChangeTwo(
+          min
+        )}:${numberDataChangeTwo(second)}`}</p>
+        <div className="select-min-container">
+          <button type="button" className="select-min-button" onClick={() => buttonHandler(1)}>
+            1분
           </button>
-          <button className="pause-button" onClick={handleStopButton}>
-            일시정지
+          <button type="button" className="select-min-button" onClick={() => buttonHandler(3)}>
+            3분
+          </button>
+          <button type="button" className="select-min-button" onClick={() => buttonHandler(10)}>
+            10분
+          </button>
+          <button type="button" className="select-min-button" onClick={() => buttonHandler(15)}>
+            15분
           </button>
         </div>
-      ) : (
-        <button type="button" className="start-button" onClick={handleStartButton}>
-          시 작
+        <button
+          type="button"
+          className="select-user-button"
+          onClick={() => {
+            setIsModalOpen(true);
+          }}
+        >
+          직접 추가
         </button>
-      )}
-      {isModalOpen && <DirectTimerAddModal isOpenModal={setIsModalOpen} setTime={setSecTime} />}
-      <audio src={alarmSource} typeof="audio/mp3" ref={audioRef} />
-    </div>
+        {isRunning ? (
+          <div className="button-box">
+            <button className="reset-button" onClick={handleResetButton}>
+              초기화
+            </button>
+            <button className="pause-button" onClick={handleStopButton}>
+              일시정지
+            </button>
+          </div>
+        ) : (
+          <button type="button" className="start-button" onClick={handleStartButton}>
+            시 작
+          </button>
+        )}
+        {isModalOpen && <DirectTimerAddModal isOpenModal={setIsModalOpen} setTime={setSecTime} />}
+        <audio src={alarmSource} typeof="audio/mp3" ref={audioRef} />
+      </div>
+    </>
   );
 };
 

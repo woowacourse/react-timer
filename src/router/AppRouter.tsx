@@ -4,6 +4,7 @@ import StopWatchPage from '../pages/StopWatch';
 import TimerPage from '../pages/Timer';
 import WorldTimePage from '../pages/WorldTime';
 import Layout from '../Layout';
+import { RecoilRoot } from 'recoil';
 
 // FIXME: 기본 홈페이지 라우팅이 안되는 이슈
 const router = createBrowserRouter([
@@ -12,16 +13,28 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
+        path: '/',
+        element: <WorldTimePage />,
+      },
+    ],
+  },
+  {
+    path: '/timer',
+    element: <Layout />,
+    children: [
+      {
         path: '/timer',
         element: <TimerPage />,
       },
+    ],
+  },
+  {
+    path: '/stopwatch',
+    element: <Layout />,
+    children: [
       {
         path: '/stopwatch',
         element: <StopWatchPage />,
-      },
-      {
-        path: '/worldtime',
-        element: <WorldTimePage />,
       },
     ],
   },

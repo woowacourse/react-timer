@@ -100,53 +100,56 @@ const StopWatchPage = () => {
   }, [laps, hour, minute, second, ms, status]);
 
   return (
-    <div className="stop-watch-page">
-      <section className="stop-watch-time-display">
-        <div className="hh-mm-ss">{`${numberDataChangeTwo(hour)}:${numberDataChangeTwo(
-          minute
-        )}:${numberDataChangeTwo(second)}`}</div>
-        <div className="ms">{numberDataChangeMS(ms)}</div>
-      </section>
-      <section className="stop-watch-button-container">
-        <button
-          type="button"
-          className="stop-watch-start-button"
-          onClick={handleStartAndStopButton}
-          style={getStartAndStopButtonStyledByStatus(status)}
-        >
-          {getStartAndStopButtonTextByStatus(status)}
-        </button>
-        <button
-          type="button"
-          className="stop-watch-lap-button"
-          onClick={handleLapButton}
-          style={getLapButtonStyledByStatus(status)}
-        >
-          {getLapButtonTextByStatus(status)}
-        </button>
-      </section>
-      <table className="lap-table">
-        <thead>
-          <tr className="lap-table-header">
-            <th>랩</th>
-            <th>시간</th>
-          </tr>
-        </thead>
-        <tbody>
-          {laps.map(({ hour, minute, second, ms }, id) => (
-            <tr key={id}>
-              <td>{id + 1}</td>
-              <td>
-                <span className="lap-hh-mm-ss">{`${numberDataChangeTwo(hour)}:${numberDataChangeTwo(
-                  minute
-                )}:${numberDataChangeTwo(second)}`}</span>
-                <span className="lap-ms">{numberDataChangeMS(ms)}</span>
-              </td>
+    <>
+      <header>스톱워치</header>
+      <div className="stop-watch-page">
+        <section className="stop-watch-time-display">
+          <div className="hh-mm-ss">{`${numberDataChangeTwo(hour)}:${numberDataChangeTwo(
+            minute
+          )}:${numberDataChangeTwo(second)}`}</div>
+          <div className="ms">{numberDataChangeMS(ms)}</div>
+        </section>
+        <section className="stop-watch-button-container">
+          <button
+            type="button"
+            className="stop-watch-start-button"
+            onClick={handleStartAndStopButton}
+            style={getStartAndStopButtonStyledByStatus(status)}
+          >
+            {getStartAndStopButtonTextByStatus(status)}
+          </button>
+          <button
+            type="button"
+            className="stop-watch-lap-button"
+            onClick={handleLapButton}
+            style={getLapButtonStyledByStatus(status)}
+          >
+            {getLapButtonTextByStatus(status)}
+          </button>
+        </section>
+        <table className="lap-table">
+          <thead>
+            <tr className="lap-table-header">
+              <th>랩</th>
+              <th>시간</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {laps.map(({ hour, minute, second, ms }, id) => (
+              <tr key={id}>
+                <td>{id + 1}</td>
+                <td>
+                  <span className="lap-hh-mm-ss">{`${numberDataChangeTwo(
+                    hour
+                  )}:${numberDataChangeTwo(minute)}:${numberDataChangeTwo(second)}`}</span>
+                  <span className="lap-ms">{numberDataChangeMS(ms)}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 
