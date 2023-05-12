@@ -25,6 +25,8 @@ const LayoutWrapper = styled.div`
 `;
 
 const LayoutContent = styled.div`
+  position: relative;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;

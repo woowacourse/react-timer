@@ -3,10 +3,30 @@ import ControlButton from '../components/common/ControlButton';
 import { ReactComponent as ClockIcon } from '../assets/icons/clock.svg';
 import QuickTimerButton from '../components/common/QuickTimerButton';
 import { useEffect, useState } from 'react';
+import alarm from '../assets/alarms/digital-alarm.mp3';
+import useModal from '../hooks/useModal';
 
 const TimerPage = () => {
+  const [alarmSound, setAlarmSound] = useState<HTMLAudioElement>(
+    new Audio(alarm)
+  );
+  const [currentTime, setCurrentTime] = useState({
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
   const [time, setTime] = useState({ hours: 0, minutes: 0, seconds: 0 });
   const [isRunning, setIsRunning] = useState(false);
+  const { modalOpen, closeModal, openModal, Modal } = useModal(false);
+
+  const playAlarmSound = () => {
+    alarmSound.play();
+  };
+
+  const stopAlarmSound = () => {
+    alarmSound.pause();
+    alarmSound.currentTime = 0;
+  };
 
   useEffect(() => {
     let timer: any;
@@ -20,6 +40,8 @@ const TimerPage = () => {
           ) {
             setIsRunning(false);
             clearInterval(timer);
+            playAlarmSound();
+            openModal();
             return prevTime;
           }
 
@@ -54,6 +76,7 @@ const TimerPage = () => {
 
   const handleStart = () => {
     setIsRunning(true);
+    setCurrentTime(time);
   };
 
   const handlePause = () => {
@@ -63,6 +86,15 @@ const TimerPage = () => {
   const handleReset = () => {
     setIsRunning(false);
     setTime({ hours: 0, minutes: 0, seconds: 0 });
+    closeModal();
+    stopAlarmSound();
+  };
+
+  const handleRestart = () => {
+    setTime(currentTime);
+    setIsRunning(true);
+    closeModal();
+    stopAlarmSound();
   };
 
   const changeTime =
@@ -134,9 +166,33 @@ const TimerPage = () => {
           </>
         )}
       </ButtonWrapper>
+      <Modal modalOpen={modalOpen}>
+        <ModalContent>
+          <p>타이머를 다시 시작할까요?</p>
+          <ModalButtonWrapper>
+            <ControlButton text='취소' onClick={handleReset} />
+            <ControlButton text='확인' onClick={handleRestart} />
+          </ModalButtonWrapper>
+        </ModalContent>
+      </Modal>
     </>
   );
 };
+
+const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+
+  width: 100%;
+  height: 100%;
+
+  color: #525252;
+  font-size: 24px;
+  font-weight: bold;
+`;
 
 const Clock = styled.span`
   position: absolute;
@@ -159,6 +215,13 @@ const ClockWrapper = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+
+  width: 100%;
+`;
+
+const ModalButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
 
   width: 100%;
 `;
