@@ -9,14 +9,16 @@ type Lap = {
   time: number;
 };
 
+type ProcessState = 'ready' | 'running' | 'stop';
+
 const StopWatchPage = () => {
-  const [start, setStart] = useState(false);
+  const [processState, setprocessState] = useState<ProcessState>('ready');
   const [time, setTime] = useState(0);
   const [laps, setLaps] = useState<Lap[]>([]);
   const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
 
   const startTimer = () => {
-    setStart(true);
+    setprocessState('running');
     setTimer(setInterval(() => setTime((prevTime) => prevTime + 10), 10));
   };
 
@@ -24,6 +26,7 @@ const StopWatchPage = () => {
     if (timer) {
       clearInterval(timer);
       setTimer(null);
+      setprocessState('stop');
     }
   };
 
@@ -31,10 +34,32 @@ const StopWatchPage = () => {
     setTime(0);
     setLaps([]);
     stopTimer();
+    setprocessState('ready');
   };
 
   const addLap = () => {
     setLaps((prevLaps) => [...prevLaps, { id: prevLaps.length + 1, time }]);
+  };
+
+  const CONTROLL_BUTTON = {
+    ready: (
+      <>
+        <ControlButton text='랩' onClick={() => {}} />
+        <ControlButton text='시작' onClick={startTimer} />
+      </>
+    ),
+    running: (
+      <>
+        <ControlButton text='랩' onClick={addLap} />
+        <ControlButton text='정지' onClick={stopTimer} />
+      </>
+    ),
+    stop: (
+      <>
+        <ControlButton text='초기화' onClick={resetTimer} />
+        <ControlButton text='시작' onClick={startTimer} />
+      </>
+    ),
   };
 
   useEffect(() => {
@@ -52,18 +77,7 @@ const StopWatchPage = () => {
             {('0' + ((time / 10) % 100)).slice(-2)}
           </Clock>
         </ClockWrapper>
-        <ButtonWrapper>
-          {start ? (
-            <ControlButton text='초기화' onClick={addLap} />
-          ) : (
-            <ControlButton text='랩' onClick={resetTimer} />
-          )}
-          {start ? (
-            <ControlButton text='정지' onClick={stopTimer} />
-          ) : (
-            <ControlButton text='시작' onClick={startTimer} />
-          )}
-        </ButtonWrapper>
+        <ButtonWrapper>{CONTROLL_BUTTON[processState]}</ButtonWrapper>
         <LapTable laps={laps} />
       </Wrapper>
     </>
