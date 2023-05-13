@@ -28,13 +28,7 @@ const LocalTime = ({ location, needDate }: LocalTimeProps) => {
           <div>{TIME_ZONE[location].NAME}</div>
         </div>
         <div className="local-time-except-location">
-          <Clock
-            className="local-time-seconds"
-            format={'a'}
-            // filter={(str: string) => (str === 'pm' ? '오후' : '오전')}
-            ticking={true}
-            timezone={location}
-          />
+          <Clock className="local-time-seconds" format={'a'} ticking={true} timezone={location} />
           <Clock format={'HH:mm'} ticking={true} timezone={location} />
           <span>:</span>
           <Clock className="local-time-seconds" format={'ss'} ticking={true} timezone={location} />
