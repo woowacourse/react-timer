@@ -12,7 +12,7 @@
 
 <br>
 
-### 🧑‍🤝‍🧑 페어 (페어 프로그래밍으로 개발)
+## 👬 팀 구성원
 
 <table>
   <tr>
@@ -22,20 +22,30 @@
       </a>
     </td>
     <td align="center" width="120px">
-      <a href="https://github.com/gabrielyoon7" target="_blank">
+      <a href="https://github.com/nangkyeonglim" target="_blank">
         <img src="https://avatars.githubusercontent.com/u/57815133?v=4" alt="파인(임낭경) 프로필" />
+      </a>
+    </td>
+        <td align="center" width="120px">
+      <a href="https://github.com/choisehyeon" target="_blank">
+        <img src="https://avatars.githubusercontent.com/u/50761690?v=4" alt="로피(최세현) 프로필" />
       </a>
     </td>
   </tr>
   <tr>
     <td align="center">
       <a href="https://github.com/shackstack" target="_blank">
-        제레미(김민석)
+        제레미(FE)
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/nangkyeonglim" target="_blank">
-        파인(임낭경) 
+        파인(FE) 
+      </a>
+    </td>
+     <td align="center">
+      <a href="https://github.com/choisehyeon" target="_blank">
+        로피(AN) 
       </a>
     </td>
   </tr>
