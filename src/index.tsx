@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 
 import GlobalStyles from './GlobalStyles';
 import App from './App';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 import WorldTimePage from './components/pages/WorldTimePage/WorldTimePage';
 import StopwatchPage from './components/pages/StopwatchPage/StopwatchPage';
 import TimerPage from './components/pages/TimerPage/TimerPage';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <App />,
