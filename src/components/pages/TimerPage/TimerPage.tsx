@@ -1,10 +1,33 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import * as Styled from './TimerPage.styled';
 import TriggerButtonSection from '../../TriggerButtonSection/TriggerButtonSection';
 import CustomTimer from '../../CustomTimer/CustomTimer';
 import Button from '../../Button/Button';
 import { useModal } from '../../Modal/useModal';
 import { Modal } from '../../Modal/Modal';
+import analogSound from '../../../assets/sound/analog-alarm.mp3';
+import digitalSound from '../../../assets/sound/digital-alarm.mp3';
+import highToneSound from '../../../assets/sound/clock-high.mp3';
+import lowToneSound from '../../../assets/sound/clock-low.mp3';
+
+const soundOptions = [
+  {
+    label: '아날로그',
+    value: analogSound,
+  },
+  {
+    label: '디지털',
+    value: digitalSound,
+  },
+  {
+    label: '하이톤',
+    value: highToneSound,
+  },
+  {
+    label: '로우톤',
+    value: lowToneSound,
+  },
+];
 
 const TimerPage = () => {
   const [time, setTime] = useState(0);
@@ -13,6 +36,8 @@ const TimerPage = () => {
   const [seconds, setSeconds] = useState('');
   const [record, setRecord] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const [selectedSound, setSelectedSound] = useState('디지털');
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const { isModalOpen, openModal, closeModal } = useModal();
   const intervalId = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -46,15 +71,36 @@ const TimerPage = () => {
   };
 
   const handleCancelButtonClick = () => {
+    stopCompleteSound();
     closeModal();
     handleReset();
   };
 
-  const playCompleteSound = () => {
-    const audio = new Audio(
-      'https://dl.dropboxusercontent.com/s/1cdwpm3gca9mlo0/kick.mp3',
-    );
-    audio.play();
+  const stopCompleteSound = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  };
+
+  const playCompleteSound = useCallback(() => {
+    const soundOption =
+      soundOptions.find((option) => option.label === selectedSound) ?? null;
+
+    if (soundOption === null) return;
+
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  }, [selectedSound]);
+
+  const getSoundSrc = () => {
+    const soundOption =
+      soundOptions.find((option) => option.label === selectedSound) ?? null;
+
+    if (soundOption === null) return;
+
+    return soundOption.value;
   };
 
   useEffect(() => {
@@ -83,7 +129,7 @@ const TimerPage = () => {
         clearInterval(intervalId.current);
       }
     };
-  }, [time, isRunning, record, openModal]);
+  }, [time, isRunning, record, openModal, playCompleteSound]);
 
   return (
     <>
@@ -146,7 +192,34 @@ const TimerPage = () => {
           onRunning={handleRunning}
           isRunning={isRunning}
         />
-
+        <audio ref={audioRef} src={getSoundSrc()} />
+        <Styled.SelectWrapper>
+          <Styled.Select
+            value={selectedSound}
+            onChange={(e) => setSelectedSound(e.target.value)}
+          >
+            {soundOptions.map((option) => (
+              <option key={option.label} value={option.label}>
+                {option.label}
+              </option>
+            ))}
+          </Styled.Select>
+          <Styled.IconWrapper>
+            <svg
+              fill="none"
+              width="24"
+              height="24"
+              shapeRendering="geometricPrecision"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </Styled.IconWrapper>
+        </Styled.SelectWrapper>
         <Styled.CustomTimerSection>
           <CustomTimer customTime={180} updateTime={updateTime} />
           <CustomTimer customTime={300} updateTime={updateTime} />
@@ -164,6 +237,7 @@ const TimerPage = () => {
             <Styled.ButtonContainer>
               <Button
                 onClick={() => {
+                  stopCompleteSound();
                   closeModal();
                   updateTime(record);
                   handleRunning();

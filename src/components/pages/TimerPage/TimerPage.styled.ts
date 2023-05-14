@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { TriggerButtonSection } from '../../TriggerButtonSection/TriggerButtonSection.styled';
 
-export const TimerPage = styled.div``;
+export const TimerPage = styled.div`
+  text-align: center;
+`;
 
 export const ClockSection = styled.section`
   display: flex;
@@ -63,4 +64,36 @@ export const CompleteMessage = styled.p`
   font-weight: 600;
   font-size: 25px;
   color: #292929;
+`;
+
+export const SelectWrapper = styled.div`
+  position: relative;
+  width: 260px;
+  height: 50px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+`;
+
+export const Select = styled.select`
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.02);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 50px;
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+  color: #292929;
+  cursor: pointer;
+`;
+
+export const IconWrapper = styled.div`
+  position: absolute;
+  left: 220px;
+  top: 12px;
+  z-index: -1;
 `;
