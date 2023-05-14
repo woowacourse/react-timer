@@ -18,7 +18,6 @@ const TriggerButtonSection = ({
 }: TriggerButtonSectionProps) => {
   return (
     <Styled.TriggerButtonSection>
-      {/* TODO: Add disable button */}
       {isStopwatch && isRunning ? (
         <Button onClick={onLap}>랩</Button>
       ) : (
