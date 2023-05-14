@@ -1,6 +1,6 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
 import * as Styled from './StopwatchPage.styled';
 import TriggerButtonSection from '../../TriggerButtonSection/TriggerButtonSection';
-import { useCallback, useEffect, useRef, useState } from 'react';
 
 const StopwatchPage = () => {
   const [time, setTime] = useState(0);

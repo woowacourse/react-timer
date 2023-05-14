@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-import GlobalStyles from './GlobalStyles';
-import App from './App';
 import { RouterProvider, createHashRouter } from 'react-router-dom';
+import App from './App';
+import GlobalStyles from './GlobalStyles';
 import WorldTimePage from './components/pages/WorldTimePage/WorldTimePage';
 import StopwatchPage from './components/pages/StopwatchPage/StopwatchPage';
 import TimerPage from './components/pages/TimerPage/TimerPage';

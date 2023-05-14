@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import clockImage from '../../../assets/clock.png';
-
 import * as Styled from './WorldTimePage.styled';
+import clockImage from '../../../assets/clock.png';
 
 function getUTCTime(offset = 0): Date {
   const now = new Date();
