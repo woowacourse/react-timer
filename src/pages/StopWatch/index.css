@@ -1,0 +1,70 @@
+.stop-watch-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stop-watch-time-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 115px;
+}
+
+.stop-watch-time-display .hh-mm-ss {
+  font-size: 46px;
+  color: var(--primary-dark);
+}
+
+.stop-watch-time-display .ms {
+  font-size: 34px;
+  color: var(--primary-gray);
+}
+
+.stop-watch-button-container {
+  display: flex;
+  width: 362px;
+  justify-content: space-around;
+  margin-top: 84px;
+}
+
+.stop-watch-start-button {
+  font-size: 34px;
+  color: var(--primary-green);
+  background: none;
+  border: none;
+}
+
+.stop-watch-lap-button {
+  font-size: 34px;
+  color: var(--primary-gray);
+  background: none;
+  border: none;
+}
+
+.lap-table {
+  margin-top: 45px;
+  font-size: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.lap-table td {
+  padding: 10px 0;
+}
+
+.lap-table-header {
+  border-bottom: 1px solid var(--primary-gray);
+}
+
+.lap-hh-mm-ss {
+  font-size: 22px;
+  color: var(--primary-dark);
+}
+
+.lap-ms {
+  font-size: 14px;
+  padding-left: 7px;
+  color: var(--primary-gray);
+}
